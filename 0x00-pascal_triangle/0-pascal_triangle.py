@@ -10,7 +10,7 @@ def pascal_triangle(n):
     for n in range(1, n):
         thisRow = []
         thisRow.append(1)
-        for k in range(1, n):                
+        for k in range(1, n):
             thisRow.append(triangle[n-1][k-1] + triangle[n-1][k])
         thisRow.append(1)
         triangle.append(thisRow)

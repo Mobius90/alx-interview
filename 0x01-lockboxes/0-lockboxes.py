@@ -3,12 +3,11 @@
 
 
 def canUnlockAll(boxes):
-    '''determines if all boxes can be unlocked.'''
-    visited = [False] * len(boxes)
-    stack = [0]
-    while stack:
-        key = stack.pop()
-        if not visited[key]:
-            visited[key] = True
-            stack.extend(boxes[key])
-    return all(visited)
+    unlocked_boxes = [0]
+    for box_id, box in enumerate(boxes):
+        if not box:
+            continue
+        for key in box:
+            if key < len(boxes) and key not in unlocked_boxes and key != box_id:
+                unlocked_boxes.append(key)
+    return len(unlocked_boxes) == len(boxes)
